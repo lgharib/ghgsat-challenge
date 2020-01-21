@@ -20,6 +20,7 @@ from observations_manager import views
 
 router = routers.DefaultRouter()
 router.register(r'targets', views.TargetViewSet)
+router.register(r'observations', views.ObservationViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

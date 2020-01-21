@@ -13,16 +13,16 @@ class TestTargetCase(TestCase):
 
 class TestObservationCase(TestCase):
     def setUp(self):
-        target = Target.objects.create(name="Target 3", 
+        target1 = Target.objects.create(name="Target 3", 
         coordinates="POINT(-15.232322 36.5656)", 
         elevation=500)
         Observation.objects.create(
             image_url="http://image-server/observations/LAT20LONG10202001201.png", 
             timestamp=datetime.datetime(2007, 12, 6, 16, 29, 43, 79043), 
-            target_id = target.id)
+            target = target1)
 
     def test_observation_is_created(self):
-        observation = Observation.objects.get(
+        observation1 = Observation.objects.get(
             image_url="http://image-server/observations/LAT20LONG10202001201.png")
-        self.assertEqual(observation.timestamp, 
+        self.assertEqual(observation1.timestamp, 
         datetime.datetime(2007, 12, 6, 16, 29, 43, 79043), msg=None)
