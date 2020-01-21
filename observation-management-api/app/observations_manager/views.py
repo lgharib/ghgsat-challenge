@@ -5,7 +5,7 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
-
+from rest_framework import generics
 
 class TargetViewSet(viewsets.ModelViewSet):
     """
@@ -20,3 +20,17 @@ class ObservationViewSet(viewsets.ModelViewSet):
     """
     queryset = Observation.objects.all()
     serializer_class = ObservationSerializer
+
+class TargetViewList(generics.ListAPIView):
+    serializer_class = TargetSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the targets
+        by filtering against a `bounding_box` query parameter.
+        """
+        queryset = Target.objects.all()
+        bounding_box = self.request.query_params.get('bounding_box', None)
+        if bounding_box is not None:
+            queryset = queryset.filter(coordinates__coveredby=bounding_box)
+        return queryset
