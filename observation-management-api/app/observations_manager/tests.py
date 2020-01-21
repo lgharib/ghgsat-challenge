@@ -109,6 +109,7 @@ class TestObservationCase(TestCase):
                 "start_timestamp": "2019-12-01 00:00:00",
                 "end_timestamp": "2019-12-06 23:59:59",
             }
-        response = self.client.get("/search_targets/", data, format='json')
+        response = self.client.get("/search_observations/", data, format='json')
+
         self.assertEqual(response.status_code, 200)
         self.assertEqual(json.loads(response.content)['count'], 2)

@@ -29,4 +29,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('search_targets/', views.TargetViewList.as_view()),
+    path('search_observations/', views.ObservationViewList.as_view()),
 ]
