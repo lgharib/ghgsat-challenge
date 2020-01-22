@@ -9,11 +9,18 @@ class Target(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['-id']
+
+
 class Observation(models.Model):
-    target = models.ForeignKey(Target, related_name='observations', 
-    on_delete=models.CASCADE, null=True)
+    target = models.ForeignKey(Target, related_name='observations',
+                               on_delete=models.CASCADE, null=True)
     image_url = models.URLField(max_length=1000)
     timestamp = models.DateTimeField()
 
     def __str__(self):
         return str(self.image_url)
+
+    class Meta:
+        ordering = ['-id']

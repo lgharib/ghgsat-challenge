@@ -47,7 +47,6 @@ class ObservationViewList(generics.ListAPIView):
         `end_timestamp` query parameters.
         """
 
-
         queryset = Observation.objects.all()
 
         bounding_box = self.request.query_params.get('bounding_box', None)

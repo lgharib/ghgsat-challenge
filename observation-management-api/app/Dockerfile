@@ -16,11 +16,18 @@ RUN apt-get update \
 #RUN add-apt-repository ppa:ubuntugis/ppa
 RUN apt-get update
 RUN apt-get install -y gdal-bin
+RUN apt-get install -y netcat
 
 # install dependencies
 RUN pip install --upgrade pip
 COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
 
+# copy entrypoint.sh
+COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+
 # copy project
 COPY . /usr/src/app/
+
+# run entrypoint.sh
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
