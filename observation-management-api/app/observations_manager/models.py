@@ -17,6 +17,7 @@ class Observation(models.Model):
     target = models.ForeignKey(Target, related_name='observations',
                                on_delete=models.CASCADE, null=True)
     image_url = models.URLField(max_length=1000)
+    image_polygon = models.PolygonField(null=True, blank=True)
     timestamp = models.DateTimeField()
 
     def __str__(self):

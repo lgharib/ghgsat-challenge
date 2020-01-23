@@ -17,6 +17,7 @@ RUN apt-get update \
 RUN apt-get update
 RUN apt-get install -y gdal-bin
 RUN apt-get install -y netcat
+RUN apt-get install -y libgeos-dev
 
 # install dependencies
 RUN pip install --upgrade pip

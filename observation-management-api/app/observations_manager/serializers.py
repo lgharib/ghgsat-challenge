@@ -6,7 +6,8 @@ class ObservationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Observation
-        fields = ('id', 'image_url', 'timestamp', 'target')
+        fields = ('id', 'image_url', 'image_polygon', 'timestamp', 'target')
+
 
 class TargetSerializer(serializers.ModelSerializer):
 

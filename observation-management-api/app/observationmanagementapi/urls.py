@@ -30,4 +30,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('search_targets/', views.TargetViewList.as_view()),
     path('search_observations/', views.ObservationViewList.as_view()),
+    path('search_targets/kml/', views.search_target_kml),
+    path('search_observations/kml/', views.search_observations_kml),
 ]
